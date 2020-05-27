@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using RMDesktopUI.ViewModels;
+using System.Windows.Controls;
+using RMDesktopUI.Helpers;
 
 namespace RMDesktopUI
 {
@@ -15,6 +17,11 @@ namespace RMDesktopUI
         public Bootstrapper()
         {
             Initialize();
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged");
         }
 
         protected override void Configure()
