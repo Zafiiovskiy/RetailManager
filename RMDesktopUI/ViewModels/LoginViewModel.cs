@@ -1,9 +1,11 @@
 ﻿using Caliburn.Micro;
+using RMDesktopUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RMDesktopUI.ViewModels
 {
@@ -12,6 +14,16 @@ namespace RMDesktopUI.ViewModels
 		private string _userName;
 
 		private string _password;
+
+		private IAPIHelper _apiHelper;
+
+		private bool _IsErrorVisible;
+
+		private string _errorMessage;
+		public LoginViewModel(IAPIHelper aPIHelper)
+		{
+			_apiHelper = aPIHelper;
+		}
 
 		public string UserName
 		{
@@ -35,6 +47,33 @@ namespace RMDesktopUI.ViewModels
 			}
 		}
 
+		
+
+		public string ErrorMessage
+		{
+			get { return _errorMessage; }
+			set 
+			{ 
+				_errorMessage = value;
+				NotifyOfPropertyChange(() => ErrorMessage);
+				NotifyOfPropertyChange(() => IsErrorVisible);
+			}
+		}
+
+
+		public bool IsErrorVisible
+		{
+			get 
+			{
+				bool output = false;
+				if (ErrorMessage?.Length > 0)
+				{
+					output = true;
+				}
+				return output;
+			}
+		}
+
 		public bool CanLogInButton
 		{
 			get
@@ -49,9 +88,18 @@ namespace RMDesktopUI.ViewModels
 			}
 		}
 
-		public void LogInButton()
+		public async Task LogInButton()
 		{
-			Console.WriteLine();
+			try
+			{
+				ErrorMessage = "";
+				var result = await _apiHelper.Authenticate(UserName, Password);
+			}
+			catch (Exception ex)
+			{
+				ErrorMessage = ex.Message;
+			}
+			
 		}
 	}
 }
