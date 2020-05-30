@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.NetworkInformation;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,7 +50,8 @@ namespace RMDesktopUI.Helpers
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    //var resourceManager = new ResourceManager("RetailManager.RMDesktopUI.Resources.ExeptionMassages", Assembly.GetExecutingAssembly());
+                    throw new LoginExeption("Password or username is incorrect.");
                 }
             }
         }
