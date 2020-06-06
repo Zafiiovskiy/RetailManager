@@ -32,7 +32,13 @@
 
         <TextBlock Text="Items" Grid.Column="1" Grid.Row="2" TextAlignment="Center"/>
         <ListBox x:Name="Products" Grid.Row="3" Grid.Column="1"
-                  MinHeight="250" MinWidth="120"/>
+                  MinHeight="250" MinWidth="120" SelectedItem="{Binding SelectedProduct}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ProductName}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="3" Margin="20 0">
             <TextBlock Text="Quantity" TextAlignment="Center" Margin="2 10"/>
@@ -43,7 +49,13 @@
 
         <TextBlock Text="Cart" Grid.Column="3" Grid.Row="2" TextAlignment="Center"/>
         <ListBox x:Name="Cart" Grid.Row="3" Grid.Column="3"
-                  MinHeight="250" MinWidth="120" />
+                  MinHeight="250" MinWidth="120">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Display}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <DockPanel Grid.Row="4" Grid.Column="3">
             <TextBlock Text="SubTotal:" Margin="0 0 10 0"/>

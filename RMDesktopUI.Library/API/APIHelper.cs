@@ -4,13 +4,8 @@ using RMDesktopUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.NetworkInformation;
-using System.Reflection;
-using System.Resources;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RMDesktopUI.Library.API
@@ -24,6 +19,14 @@ namespace RMDesktopUI.Library.API
         {
             InitilizeClient();
             _loggedInUser = loggedInUser; 
+        }
+
+        public HttpClient client
+        {
+            get
+            {
+                return httpClient;
+            }
         }
 
         private void InitilizeClient()

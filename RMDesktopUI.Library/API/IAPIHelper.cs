@@ -1,5 +1,6 @@
 ﻿
 using RMDesktopUI.Models;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RMDesktopUI.Library.API
@@ -8,5 +9,6 @@ namespace RMDesktopUI.Library.API
     {
         Task<AuthenticatedUser> Authenticate(string userName, string password);
         Task GetLoggedInUserInfo(string token);
+        HttpClient client { get; }
     }
 }
