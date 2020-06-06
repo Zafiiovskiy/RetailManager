@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RMDesktopUI.Views"
+             xmlns:local="clr-namespace:RMDesktopUI.Views" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" Background="White" FontSize="24"
              d:DesignHeight="490" d:DesignWidth="800">
     <Grid>
@@ -27,12 +27,22 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Border CornerRadius="10" Grid.ColumnSpan="6" Grid.RowSpan="8" Grid.Row="0">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="BurlyWood" Offset="0.0"/>
+                    <GradientStop Color="#FFE6BBF5" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        
         <TextBlock Text="Sales Page" Grid.Row="1" 
                    Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Center" FontSize="48"/>
 
-        <TextBlock Text="Items" Grid.Column="1" Grid.Row="2" TextAlignment="Center"/>
+        <iconPacks:PackIconMaterial Kind="Store" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30"/>
         <ListBox x:Name="Products" Grid.Row="3" Grid.Column="1"
-                  MinHeight="250" MinWidth="120" SelectedItem="{Binding SelectedProduct}">
+                  MinHeight="250" MinWidth="120" SelectedItem="{Binding SelectedProduct}"
+                 BorderThickness="0" Background="Transparent">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -52,16 +62,25 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <Border BorderThickness="1" CornerRadius="15" BorderBrush="Black"
+                        Opacity="0.8" Grid.Row="3" Grid.Column="2" Grid.RowSpan="1"/>
         <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="3" Margin="20 0">
-            <TextBlock Text="Quantity" TextAlignment="Center" Margin="2 10"/>
-            <TextBox x:Name="ItemQuantity" MinWidth="100" Margin="2 10"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Quantity" TextAlignment="Center" Margin="2 10"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBox x:Name="ItemQuantity"  Margin="2 5" MinWidth="35" Background="Transparent" BorderThickness="0"/>
+                    <Border Width="auto" Height="2" Background="Black" Opacity="0.5"/>
+                </StackPanel>
+            </StackPanel>
             <Button x:Name="AddToCart" Content="Add to Cart" Margin="2 10"/>
             <Button x:Name="RemoveFromCart" Content="Remove from Cart" Margin="2 10"/>
         </StackPanel>
 
-        <TextBlock Text="Cart" Grid.Column="3" Grid.Row="2" TextAlignment="Center"/>
+        <iconPacks:PackIconMaterial Kind="Cart" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="30"/>
         <ListBox x:Name="Cart" Grid.Row="3" Grid.Column="3"
-                  MinHeight="250" MinWidth="120">
+                  MinHeight="250" MinWidth="120"
+                 BorderThickness="0" Background="Transparent">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
