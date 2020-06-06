@@ -14,5 +14,13 @@ namespace RMDesktopUI.Library.Models
         public decimal RetailPrice { get; set; }
         public int QuantityInStock { get; set; }
         public bool isTaxable { get; set; }
+
+        public string DisplayRetailPrice
+        {
+            get
+            {
+                return RetailPrice.ToString("C");
+            }
+        }
     }
 }

@@ -170,23 +170,15 @@ namespace RMDesktopUI.ViewModels
 		//Calculations
 		private decimal CalculateSubTotal() {
 			decimal subTotal = 0;
-			foreach (var item in Cart)
-			{
-				subTotal += item.Product.RetailPrice * item.Quantity;
-			}
+			subTotal = Cart.Sum(x => x.Product.RetailPrice * x.Quantity);
 			return subTotal;
 		}
 		private decimal CalculateTax()
 		{
 			decimal tax = 0;
 			decimal taxRate = _configHelper.GetTaxRate();
-			foreach (var item in Cart)
-			{
-				if (true)
-				{
-					tax += item.Product.RetailPrice* item.Quantity * taxRate;
-				}
-			}
+			tax = Cart.Where(x => x.Product.isTaxable)
+				.Sum(x => x.Product.RetailPrice * x.Quantity * taxRate);
 			return tax;
 		}
 		private decimal CalculateTotal()

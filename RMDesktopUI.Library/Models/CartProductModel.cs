@@ -10,11 +10,19 @@ namespace RMDesktopUI.Library.Models
     {
         public ProductModel Product { get; set; }
         public int Quantity { get; set; }
-        public string Display
+
+        public string DisplaySumPriceInCart
         {
             get
             {
-                return $"{Product.ProductName} - {Quantity}";
+                return (Product.RetailPrice * Quantity).ToString("C");
+            }
+        }
+        public string DisplayQuantity
+        {
+            get
+            {
+                return Quantity.ToString();
             }
         }
     }
