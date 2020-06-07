@@ -73,5 +73,9 @@
     <Build Include="dbo\Tables\Inventory.sql" />
     <Build Include="dbo\Stored Procedures\spUserLookup.sql" />
     <Build Include="dbo\Stored Procedures\spProductLookup.sql" />
+    <Build Include="dbo\Stored Procedures\spProductGetById.sql" />
+    <Build Include="dbo\Stored Procedures\spSaleInsert.sql" />
+    <Build Include="dbo\Stored Procedures\spSaleDetailInsert.sql" />
+    <Build Include="dbo\Stored Procedures\spSaleLookup.sql" />
   </ItemGroup>
 </Project>
