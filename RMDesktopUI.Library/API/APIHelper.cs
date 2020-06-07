@@ -39,6 +39,11 @@ namespace RMDesktopUI.Library.API
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+        public void LogOffUser()
+        {
+            httpClient.DefaultRequestHeaders.Clear();
+        }
+
         public async Task<AuthenticatedUser> Authenticate(string username, string password)
         {
             var data = new FormUrlEncodedContent(new[]
