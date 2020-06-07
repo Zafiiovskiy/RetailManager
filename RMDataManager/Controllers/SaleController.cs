@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace RMDataManager.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SaleController : ApiController
     {
         public void Post(SaleModel saleModel)
@@ -19,6 +19,13 @@ namespace RMDataManager.Controllers
             SaleData data = new SaleData();
             string userId = RequestContext.Principal.Identity.GetUserId();
             data.PostSale(saleModel,userId);
+        }
+
+        [Route("GetSalesReport")]
+        public List<SaleReportModel> GetSalesReport()
+        {
+            SaleData data = new SaleData();
+            return data.GetSaleReport();
         }
     }
 }

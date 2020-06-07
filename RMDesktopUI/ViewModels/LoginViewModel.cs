@@ -17,7 +17,6 @@ namespace RMDesktopUI.ViewModels
 		private string _password;
 		private IAPIHelper _apiHelper;
 		private IEventAggregator _events;
-		private bool _IsErrorVisible;
 		private string _errorMessage;
 
 		public LoginViewModel(IAPIHelper aPIHelper, IEventAggregator events)
