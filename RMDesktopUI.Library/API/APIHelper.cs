@@ -39,7 +39,7 @@ namespace RMDesktopUI.Library.API
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public void LogOffUser()
+        public void LoggOffUser()
         {
             httpClient.DefaultRequestHeaders.Clear();
         }
